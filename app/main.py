@@ -1,10 +1,20 @@
 from fastapi import FastAPI
 from .routers import auth,note
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 
-# routers middlewared
+# Cors policy
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["*"],
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
+)
+
+# routers middleware
 
 app.include_router(auth.router)
 app.include_router(note.router)
