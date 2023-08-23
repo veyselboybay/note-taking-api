@@ -6,6 +6,7 @@ from .auth_schemas import UserOut
 class NoteCreate(BaseModel):
     title: str
     content: str
+    isComplete: bool | None = False
 
 class NoteOut(BaseModel):
     id: int
